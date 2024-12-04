@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import { Bomb, GamepadIcon, Skull, Trophy, Dices } from 'lucide-react';
+import { useState, useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { Bomb, GamepadIcon, Skull, Trophy, Dices } from "lucide-react";
 
 const BOARD_SIZE = 4;
 const TILES = {
@@ -28,7 +28,7 @@ const App = () => {
   );
   const [points, setPoints] = useState(0);
   const [highScore, setHighScore] = useState(() => {
-    const savedHighScore = localStorage.getItem('minesweeperHighScore');
+    const savedHighScore = localStorage.getItem("minesweeperHighScore");
     return savedHighScore ? parseInt(savedHighScore, 10) : 0;
   });
   const [gameOver, setGameOver] = useState(false);
@@ -37,7 +37,7 @@ const App = () => {
     if (gameOver && points > highScore) {
       const newHighScore = Math.max(points, highScore);
       setHighScore(newHighScore);
-      localStorage.setItem('minesweeperHighScore', newHighScore.toString());
+      localStorage.setItem("minesweeperHighScore", newHighScore.toString());
     }
   }, [gameOver, points, highScore]);
 
@@ -102,20 +102,20 @@ const App = () => {
         Array.from({ length: BOARD_SIZE }, () => Array(BOARD_SIZE).fill(true))
       );
       toast.success(`Epic Score: ${points}!`, {
-        icon: '🎯',
+        icon: "🎯",
         style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
         },
       });
       setGameOver(true);
-      toast.error('BOOM! Bomb Detonated!', {
+      toast.error("BOOM! Bomb Detonated!", {
         icon: <Bomb className="text-red-500" />,
         style: {
-          borderRadius: '10px',
-          background: '#ff6b6b',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#ff6b6b",
+          color: "#fff",
         },
       });
 
@@ -147,9 +147,9 @@ const App = () => {
                 ${
                   revealedBoard[i][j]
                     ? cell === TILES.BOMB
-                      ? 'bg-black border-black text-black animate-pulse'
-                      : 'bg-green-400 border-green-600 text-white'
-                    : 'bg-indigo-300 border-indigo-500 text-indigo-700'
+                      ? "bg-black border-black text-black animate-pulse"
+                      : "bg-green-400 border-green-600 text-white"
+                    : "bg-indigo-300 border-indigo-500 text-indigo-700"
                 }
               `}
             >
